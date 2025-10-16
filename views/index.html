@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Bem vindo a pizzaria PW2</h1>
+    <div id="container"></div>
+    <script>
+        const container = document.getElementById('container');
+        fetch('/produto')
+            .then((resposta) => {
+                return resposta.json()
+            })
+            .then((produto) => {
+                console.log(produto)
+
+                produto.forEach(item => {
+                    container.innerHTML += `${item['produto_nome']}<br> ${item['produto_descricao']}<br> ${item['produto_valor']}<br> `
+                });
+            })
+    </script>
+</body>
+
+</html>
